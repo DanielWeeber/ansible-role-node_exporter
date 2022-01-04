@@ -40,7 +40,7 @@ Controls for the `node_exporter` service.
 
 ## Dependencies
 
-None.
+None. 
 
 ## Example Playbook
 
