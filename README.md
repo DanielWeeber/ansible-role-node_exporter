@@ -1,6 +1,6 @@
 # Ansible Role: Node exporter
 
-[![Build Status](https://travis-ci.com/geerlingguy/ansible-role-node_exporter.svg?branch=master)](https://travis-ci.com/geerlingguy/ansible-role-node_exporter)
+[![Ansible Galaxy Release](https://github.com/DanielWeeber/ansible-role-node_exporter/actions/workflows/release.yml/badge.svg)](https://github.com/DanielWeeber/ansible-role-node_exporter/actions/workflows/release.yml)
 
 This role installs Prometheus' [Node exporter](https://github.com/prometheus/node_exporter) on Linux hosts, and configures a systemd unit file so the service can run and be controlled by systemd. In addition it configures textfile modules.
 
