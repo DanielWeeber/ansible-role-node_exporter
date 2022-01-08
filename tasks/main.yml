@@ -73,6 +73,7 @@
     - "collector/ubuntu/*sh"
   when:
     - ansible_distribution  == "Ubuntu"
+    - ansible_distribution  == "Debian"
 
 - name: copy textfile modules for node_exporter centos
   copy:
