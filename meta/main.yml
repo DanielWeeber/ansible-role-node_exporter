@@ -1,10 +1,10 @@
 ---
 dependencies: []
 galaxy_info:
-  author: Jeff Geerling
+  author: Daniel Weeber
+  namespace: danielweeber
   role_name: node_exporter
   description: Prometheus' node_exporter for Linux hosts.
-  company: Midwestern Mac, LLC
   license: license (MIT)
   min_ansible_version: 2.7
   platforms:
