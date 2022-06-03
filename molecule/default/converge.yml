@@ -8,5 +8,12 @@
       when: ansible_os_family == 'Debian'
       changed_when: false
 
+    - name: Install crontabs
+      package:
+        name: crontabs
+        state: present
+      when: ansible_os_family == 'RedHat'
+      changed_when: false
+
   roles:
     - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"

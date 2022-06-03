@@ -22,6 +22,7 @@
 
 - name: Move node_exporter binary into place.
   copy:
+    # yamllint disable-line rule:line-length
     src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ node_exporter_arch }}/node_exporter"
     dest: "{{ node_exporter_bin_path }}"
     mode: 0755
@@ -126,6 +127,7 @@
 - name: delete tmp file
   failed_when: false
   file:
+    # yamllint disable-line rule:line-length
     path: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ node_exporter_arch }}/node_exporter"
     state: absent
 
