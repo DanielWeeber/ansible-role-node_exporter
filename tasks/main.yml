@@ -53,6 +53,7 @@
     path: "{{ item.path }}"
     state: absent
   with_items: "{{ node_exporter_modules_to_delete.files }}"
+  when: node_exporter_modules_to_delete is changed
 
 - name: copy textfile modules for node_exporter
   copy:
@@ -72,8 +73,7 @@
   with_fileglob: 
     - "collector/ubuntu/*sh"
   when:
-    - ansible_distribution  == "Ubuntu"
-    - ansible_distribution  == "Debian"
+    - ansible_distribution  == "Ubuntu" or ansible_distribution  == "Debian"
 
 - name: copy textfile modules for node_exporter centos
   copy:
@@ -92,17 +92,16 @@
     patterns: "*.sh"
   register: node_exporter_collector_items
 
-
-- name: setup cronjobs for textfile modules daily
+- name: setup cronjobs for textfile modules every 2h
   ansible.builtin.cron:
-    name: "daily node_exporter cronjob textfile module {{ item.path }}"
+    name: "node_exporter textfile module cronjob {{ item.path }}"
     state: present
     weekday: "*"
     minute: "0"
-    hour: "12"
+    hour: "*/2"
     user: root
     job: "{{ item.path }} | sponge {{ item.path }}.prom"
-    cron_file: node_exporter_daily
+    cron_file: node_exporter_cronjob
   with_items: 
     - "{{ node_exporter_collector_items.files }}"
 
