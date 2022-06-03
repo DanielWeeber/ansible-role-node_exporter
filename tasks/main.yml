@@ -61,7 +61,7 @@
     dest: "{{ node_exporter_collector_path }}"
     mode: 0755
   notify: restart node_exporter
-  with_fileglob: 
+  with_fileglob:
     - "collector/*sh"
 
 - name: copy textfile modules for node_exporter ubuntu
@@ -70,7 +70,7 @@
     dest: "{{ node_exporter_collector_path }}"
     mode: 0755
   notify: restart node_exporter
-  with_fileglob: 
+  with_fileglob:
     - "collector/ubuntu/*sh"
   when:
     - ansible_distribution  == "Ubuntu" or ansible_distribution  == "Debian"
@@ -81,7 +81,7 @@
     dest: "{{ node_exporter_collector_path }}"
     mode: 0755
   notify: restart node_exporter
-  with_fileglob: 
+  with_fileglob:
     - "collector/centos/*sh"
   when:
     - ansible_distribution  == "CentOS"
@@ -102,7 +102,7 @@
     user: root
     job: "{{ item.path }} | sponge {{ item.path }}.prom"
     cron_file: node_exporter_cronjob
-  with_items: 
+  with_items:
     - "{{ node_exporter_collector_items.files }}"
 
 - name: Create node_exporter user.
